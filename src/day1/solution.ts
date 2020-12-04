@@ -1,7 +1,8 @@
 import { readLineToArray } from "../utils/inputReader";
 
+
 const inputToNumArray = async () => {
-  const numArray = await readLineToArray();
+  const numArray = await readLineToArray(`${__dirname}/input`);
   return numArray.map(value => parseInt(value));
 }
 

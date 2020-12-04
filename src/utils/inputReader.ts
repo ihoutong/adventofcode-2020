@@ -1,9 +1,9 @@
 import * as readline from 'readline';
-import { createReadStream, mkdir, readFile } from 'fs';
+import { createReadStream } from 'fs';
 
-const readLineToArray = async (): Promise<string[]> => {
+const readLineToArray = async (file: string): Promise<string[]> => {
   const readInterface = readline.createInterface({
-    input: createReadStream(__dirname+'/input'),
+    input: createReadStream(file),
     output: process.stdout,
     terminal: false,
     crlfDelay: Infinity
