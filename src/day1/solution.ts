@@ -1,27 +1,14 @@
-import * as readline from 'readline';
-import { createReadStream, mkdir, readFile } from 'fs';
+import { readLineToArray } from "../utils/inputReader";
+
+const inputToNumArray = async () => {
+  const numArray = await readLineToArray();
+  return numArray.map(value => parseInt(value));
+}
 
 const sum = 2020;
 
-const getArrayFromInput = async (): Promise<number[]> => {
-  const readInterface = readline.createInterface({
-    input: createReadStream(__dirname+'/input'),
-    output: process.stdout,
-    terminal: false,
-    crlfDelay: Infinity
-  });
-  
-  let inputArray: number[] = [];
-  
-  for await (const line of readInterface) {
-    inputArray.push(parseInt(line));
-  }
-
-  return inputArray;
-}
-
 const part1 = async() => {
-  const numbers = await getArrayFromInput();
+  const numbers = await inputToNumArray();
   numbers.sort((a, b) => a - b);
 
   const min = {
@@ -52,7 +39,7 @@ const part1 = async() => {
 }
 
 const part2 = async() => {
-  const numbers = await getArrayFromInput();
+  const numbers = await inputToNumArray();
   numbers.sort((a, b) => a - b);
 
   const min = {
