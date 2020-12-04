@@ -1,6 +1,7 @@
 import * as readline from 'readline';
 import { createReadStream, mkdir, readFile } from 'fs';
 
+const sum = 2020;
 
 const getArrayFromInput = async (): Promise<number[]> => {
   const readInterface = readline.createInterface({
@@ -32,14 +33,13 @@ const part1 = async() => {
     value: numbers[numbers.length - 1]
   };
 
-  const sum = 2020;
   while(true) {
     const currentSum = min.value + max.value;
     if (currentSum == sum) {
       break;
     }
 
-    if (currentSum < 2020) {
+    if (currentSum < sum) {
       min.index++;
       min.value = numbers[min.index];
     } else {
@@ -65,19 +65,18 @@ const part2 = async() => {
   };
 
   const mid = {
-    index: numbers.length / 2,
-    value: numbers[numbers.length / 2]
+    index: 1,
+    value: numbers[1]
   };
 
 
-  const sum = 2020;
   while(true) {
     const currentSum = min.value + max.value + mid.value;
     if (currentSum == sum) {
       break;
     }
 
-    if (currentSum < 2020) {
+    if (currentSum < sum) {
       min.index++;
       min.value = numbers[min.index];
     } else {
@@ -97,10 +96,7 @@ const part2 = async() => {
   return mid.value * max.value * min.value;
 }
 
-
-
-
-
-export default async() => {
-  console.log(await part2());
+export {
+  part1,
+  part2
 }
