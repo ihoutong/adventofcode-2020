@@ -47,9 +47,9 @@ const part2 = async() => {
   const input = await getValidPassports();
   const eyeColors = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'];
 
-  return input.map(passport => {
+  return input.filter(passport => {
     const passportData = passport.split(' ');
-    const validationResults = passportData.map(data => {
+    const validationResults = passportData.filter(data => {
       const [key, value] = data.split(':');
       switch (key) {
         case 'byr': {
@@ -84,10 +84,10 @@ const part2 = async() => {
         case 'cid':
           return true;
       }
-    }).filter(Boolean);
+    });
 
     return passportData.length === validationResults.length;
-  }).filter(Boolean).length;
+  }).length;
 };
 
 export {
