@@ -76,7 +76,7 @@ const part2 = async() => {
           return (unit === 'cm' && measurement >= 150 && measurement <= 193) ||
             (unit === 'in' && measurement >= 59 && measurement <= 76);
         case 'hcl':
-          return value.search(/#+[\d\w]{6}/g) !== -1
+          return value.search(/#+[\d|a-f]{6}/g) !== -1
         case 'ecl':
           return eyeColors.includes(value);
         case 'pid':
